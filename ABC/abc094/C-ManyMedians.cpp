@@ -15,8 +15,8 @@ int main()
     vector<int> b(n);
     b = a;
     sort(a.begin(), a.end());
-    int center1 = a[n / 2];
-    int center2 = a[n / 2 + 1];
+    int center1 = a[n / 2 - 1];
+    int center2 = a[n / 2];
     for (int i = 0; i < n; i++)
     {
         if (b[i] <= center1)
