@@ -11,8 +11,8 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            // "miDebuggerPath": "C:\\gcc\\mingw64\\bin\\gdb.exe",
-            "miDebuggerPath": "C:\\TDM-GCC-64\\bin\\gdb.exe",
+            "miDebuggerPath": "C:\\gcc\\mingw64\\bin\\gdb.exe",
+            // "miDebuggerPath": "C:\\TDM-GCC-64\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "gdb の再フォーマットを有効にする",
