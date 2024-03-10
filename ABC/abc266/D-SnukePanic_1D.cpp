@@ -5,7 +5,7 @@
 using namespace std;
 // 貪欲法では解けない。（単調性がない）
 
-int main(){\jp\guardduty\
+int main(){
     int n;
     cin >> n;
     vector<tuple<int, int, int>> sunuke(n);
