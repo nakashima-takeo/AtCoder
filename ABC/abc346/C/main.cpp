@@ -12,34 +12,23 @@ int main(void)
   cin.tie(0)->sync_with_stdio(0);
   // ここから本番コード
 
-  int n, m; ll d;
-  cin >> n >> m >> d;
-
+  int n; ll k;
+  cin >> n >> k;
   vector<ll> a(n);
-  vector<ll> b(m);
-  REP(i, n){
-    cin >> a[i];
-  }
-  REP(i, m){
-    cin >> b[i];
-  }
+  REP(i, n) cin >> a[i];
 
   sort(ALL(a));
-  sort(ALL(b));
 
-  ll ans = -1;
-
+  ull total = k * (k+1) / 2;
+  set<ll> inputSet;
   REP(i, n){
-    int it = upper_bound(ALL(b), a[i]+ d) - b.begin();
-    if(it > 0 ){
-      ll x = b[it - 1];
-      if (a[i] - d <= x){
-        ans = max(ans, a[i] + x);
-      }
-    }
+    if(a[i] > k) continue;
+    inputSet.insert(a[i]);
   }
+  ull inputSum = accumulate(ALL(inputSet), 0LL);
+  ull result = total - inputSum;
 
-  cout << ans << endl;
+  cout << result << endl;
 
   // ここまで
   return 0;
