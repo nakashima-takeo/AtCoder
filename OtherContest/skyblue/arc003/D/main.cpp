@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-using long long ll;
-using unsigned long long ull;
-using long double ld;
+using ll = long long;
+using ull = unsigned long long;
+using ld = long double;
 
 #define OVERLOAD_REP(_1, _2, _3, name, ...) name
 #define REP1(i, n) for (auto i = std::decay_t<decltype(n)>{}; (i) != (n); ++(i))
@@ -34,9 +34,10 @@ int main(void)
   rep(i, loopCount){
     iota(all(mans), 0);
     rep(j, k){
+      int a, b;
       while(true){
-        int a = dist(gen);
-        int b = dist(gen);
+        a = dist(gen);
+        b = dist(gen);
         if(a != b){
           swap(mans[a], mans[b]);
           break;
