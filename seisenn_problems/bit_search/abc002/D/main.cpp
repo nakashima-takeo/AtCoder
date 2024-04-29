@@ -16,7 +16,55 @@ int main(void)
   cin.tie(0)->sync_with_stdio(0);
   // ここから本番コード
 
-  
+  int n, m;
+  cin >> n >> m;
+
+  vector<set<int>> relation(n);
+
+  rep(i, n) relation[i].insert(i);
+
+  rep(i, m){
+    int x, y;
+    cin >> x >> y;
+    x--;
+    y--;
+    relation[x].insert(y);
+    relation[y].insert(x);
+  }
+
+  int result = 1;
+
+  rep(bit, 1<<n){
+    set<int> intersection;
+    set<int> member;
+    bool firstFlag = true;
+    rep(i, n){
+      if(bit & (1 << i)){
+        member.insert(i);
+        if(firstFlag){
+          intersection = relation[i];
+          firstFlag = false;
+        } else {
+          set<int> result_set;
+          set_intersection(all(intersection), all(relation[i]), inserter(result_set, result_set.begin()));
+          intersection = result_set;
+        }
+      }
+    }
+
+    if(member.size() == 0) continue;
+
+    auto last = --member.end();
+    for (auto &&m : member)
+    {
+      if(!intersection.contains(m)) break;
+      if(m == *last){
+        int size = member.size();
+        result = max(result, size);
+      }
+    }
+  }
+  cout << result << endl;
 
   // ここまで
   return 0;
