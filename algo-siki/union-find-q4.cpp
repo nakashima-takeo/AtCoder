@@ -24,19 +24,18 @@ int main(void)
 
   vector<int> par(n, -1);
 
+  int result = n;
+
   rep(i, m){
     int a, b;
     cin >> a >> b;
     int rootA = findRoot(par, a);
     int rootB = findRoot(par, b);
     if(rootA != rootB){
-      if(rootA > rootB) swap(rootA, rootB);
-      par[rootB] = rootA;
+      result--;
+      par[rootA] = rootB;
     }
-  }
-
-  rep(i, n){
-    cout << findRoot(par, i) << endl;
+    cout << result << endl;
   }
 
   return 0;

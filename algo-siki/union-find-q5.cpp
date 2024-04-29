@@ -19,24 +19,28 @@ int findRoot(vector<int> &parent, int a){
 
 int main(void)
 {
-  int n, m;
-  cin >> n >> m;
+  int n, q;
+  cin >> n >> q;
 
   vector<int> par(n, -1);
+  vector<ll> weight(n, 0);
+  rep(i, n) cin >> weight[i];
 
-  rep(i, m){
-    int a, b;
-    cin >> a >> b;
-    int rootA = findRoot(par, a);
-    int rootB = findRoot(par, b);
-    if(rootA != rootB){
-      if(rootA > rootB) swap(rootA, rootB);
-      par[rootB] = rootA;
+  rep(i, q){
+    int t, x, y;
+    cin >> t >> x >> y;
+    int rootX, rootY;
+    if(t == 0){
+      rootX = findRoot(par, x);
+      rootY = findRoot(par, y);
+      if(rootX != rootY){
+        par[rootX] = rootY;
+        weight[rootY] += weight[rootX];
+      }
+    } else {
+      rootX = findRoot(par, x);
+      cout << weight[rootX] << endl;
     }
-  }
-
-  rep(i, n){
-    cout << findRoot(par, i) << endl;
   }
 
   return 0;
