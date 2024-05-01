@@ -56,7 +56,7 @@ int main(void)
     }
   }
 
-  result = 1 - (static_cast<double>(failure_count)/ loopCount);
+  result = (static_cast<double>(loopCount - failure_count)/ loopCount);
   cout << result << endl;
 
   // ここまで
